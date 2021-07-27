@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Title from "./Title/title";
+import "../components/app.css";
 
 class App extends Component {
     constructor(props) {
