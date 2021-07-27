@@ -17,7 +17,7 @@ class App extends Component {
 
     async fetchMediaData() {
         let response = await axios.get(
-            "http://localhost:5000/api/collections"
+            "http://localhost:5000/api/collections/user"
         );
         this.setState({
             mediaData: response.data
