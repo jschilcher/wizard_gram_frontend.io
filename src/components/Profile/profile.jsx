@@ -15,7 +15,7 @@ function Profile() {
             </div>
 
             <div className="profile-user-settings">
-              <h1 className="profile-user-name">janedoe_</h1>
+              <h1 className="profile-user-name">Strangebella22</h1>
 
               <button className="btn profile-edit-btn">Edit Profile</button>
 
@@ -43,7 +43,7 @@ function Profile() {
 
             <div className="profile-bio">
               <p>
-                <span className="profile-real-name">Jane Doe</span> Lorem ipsum
+                <span className="profile-real-name">Bellatrix</span> Lorem ipsum
                 dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
               </p>
             </div>
@@ -56,7 +56,7 @@ function Profile() {
           <div className="gallery">
             <div className="gallery-item" tabindex="0">
               <img
-                src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+                src="https://images.unsplash.com/photo-1577493340887-b7bfff550145?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=586&q=80"
                 className="gallery-image"
                 alt=""
               />
@@ -77,7 +77,7 @@ function Profile() {
 
             <div className="gallery-item" tabindex="0">
               <img
-                src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
+                src="https://images.unsplash.com/photo-1615962122149-ef6987cf19f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
                 className="gallery-image"
                 alt=""
               />
@@ -98,7 +98,7 @@ function Profile() {
 
             <div className="gallery-item" tabindex="0">
               <img
-                src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
+                src="https://images.unsplash.com/photo-1539103377911-4909a1eae382?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
                 className="gallery-image"
                 alt=""
               />
