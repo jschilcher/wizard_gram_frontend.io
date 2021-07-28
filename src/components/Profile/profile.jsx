@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../Profile/profile.css";
 
 function Profile(props) {
-  const [profileImage, setProfileImage] = useState("");
+  const [user, setUser] = useState({});
 
   useEffect(() => {
-    fetchUserProfile();
-    return () => {
-      cleanup;
-    };
-  }, [input]);
+  //   const fetchUser = async () => {
+  //     const response = await axios
+  //       .get("http://localhost:5000/collections/user")
+  //       .then((response) => {
+  //         console.log(response);
+  //         setUser(response.data);
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //       });
+  //   };
+  // });
 
-  const fetchUserProfile = async () => {
-    const data = await axios.get("http://localhost:5000/collections/user");
-
-    const items = await data.json();
-  };
+  // console.log(user);
 
   return (
     <div>
