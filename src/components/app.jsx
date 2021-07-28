@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import Title from "./Title/title";
 import "../components/app.css";
+import  Login from "./Login/login";
 
 class App extends Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class App extends Component {
 
     async fetchMediaData() {
         let response = await axios.get(
-            "http://localhost:5000/api/collections"
+            "http://localhost:5000/api/collections/user"
         );
         this.setState({
             mediaData: response.data
