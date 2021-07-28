@@ -5,11 +5,11 @@ function NavBar() {
     return(
         <nav>
             <ul>
-                <Link to="/api/collections">
-                    <li>Home</li>
+                <Link to="/profile">
+                    <li>Profile</li>
                 </Link>
-                <Link to="/api/collections/user">
-                    <li>User</li>
+                <Link to="/login">
+                    <li>Login</li>
                 </Link>
             </ul>
         </nav>
