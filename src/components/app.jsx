@@ -11,7 +11,7 @@ import NavBar from "./NavBar/navBar";
 function App() {
   return (
     <div className="App">
-  
+        <Title/>
       <NavBar/>
    
       <Switch>
