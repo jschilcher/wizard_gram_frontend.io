@@ -35,6 +35,8 @@ function Login(props) {
     );
 }
 
+export default Login;
+
 {/* {/* // const { Component } = React
 
 // className EntryPage extends Component { */}
