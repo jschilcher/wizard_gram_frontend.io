@@ -6,6 +6,7 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./Login/login";
 import Profile from "../components/Profile/profile";
 import NavBar from "./NavBar/navBar";
+// import Register from "./Register/register";
 
 function App() {
   return (
@@ -15,10 +16,10 @@ function App() {
       <Login />
       <Profile />
       <Switch>
-        {/* <Route path="/api/auth" exact component={Login} />
-        <Route path="/api/collections/profile" component={Profile} /> */}
+        <Route path="/login" exact component={Login} />
+        <Route path="/profile" exact component={Profile} />
       </Switch>
-    </div>
+     </div>
   );
 }
 
