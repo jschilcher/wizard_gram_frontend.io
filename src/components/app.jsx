@@ -5,16 +5,17 @@ import "../components/app.css";
 import { Switch, Route } from "react-router-dom";
 import Login from "./Login/login";
 import Profile from '../components/Profile/profile'
+import NavBar from "./NavBar/navBar";
 
 function App() {
   return (
     <div className="App">
       <Title />
-      <Login />
-      <Profile />
+      <NavBar/>
+      <Login/>
       <Switch>
-        {/* <Route path="/user" exact component={Title} /> */}
-        {/* <Route path="/profile" exact component={Profile} /> */}
+        {/* <Route path="/api/auth" exact component={Login} />
+        <Route path="/api/collections/profile" component={Profile} /> */}
       </Switch>
     </div>
   );
