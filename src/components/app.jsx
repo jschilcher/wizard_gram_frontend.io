@@ -4,15 +4,16 @@ import Title from "./Title/title";
 import "../components/app.css";
 import { Switch, Route } from "react-router-dom";
 import Login from "./Login/login";
-import Profile from '../components/Profile/profile'
+import Profile from "../components/Profile/profile";
 import NavBar from "./NavBar/navBar";
 
 function App() {
   return (
     <div className="App">
       <Title />
-      <NavBar/>
-      <Login/>
+      <NavBar />
+      <Login />
+      <Profile />
       <Switch>
         {/* <Route path="/api/auth" exact component={Login} />
         <Route path="/api/collections/profile" component={Profile} /> */}

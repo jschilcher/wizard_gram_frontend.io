@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Profile/profile.css";
 
-function Profile() {
+function Profile(props) {
+  const [profileImage, setProfileImage] = useState("");
+
+  useEffect(() => {
+    fetchUserProfile();
+    return () => {
+      cleanup;
+    };
+  }, [input]);
+
+  const fetchUserProfile = async () => {
+    const data = await axios.get("http://localhost:5000/collections/user");
+
+    const items = await data.json();
+  };
+
   return (
     <div>
       <header>
