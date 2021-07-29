@@ -8,7 +8,7 @@ const Login = () => {
   const [userData, setUserData] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [validToken, setValidToken] = useState(false);
+  const [validToken, setValidToken] = useState(true);
 
   const handleChange = (event) => {
     setEmail(document.getElementById("email").value);
