@@ -2,6 +2,7 @@ import React from "react";
 // import {Link} from "react-router-dom;"
 import axios from "axios";
 import "../Login/login.css";
+import jwtDecode from "jwt-decode";
 
 class Login extends React.Component {
   constructor(props) {
@@ -13,29 +14,52 @@ class Login extends React.Component {
       password: ""
     };
 
+    this.handleChange= this.handleChange.bind(this);
+    this.handleSubmit= this.handleSubmit.bind(this);
+
     //dont forget bindings
   }
 
   componentDidMount() {
     this.fetchUser();
+
+    const jwt = localStorage.getItem("token");
+    try{
+        const user = jwtDecode(jwt);
+        this.setState({user})
+    } catch {}
   }
 
   componentDidUpdate() {
     console.log("We Did It!");
   }
 
-  handSubmit() {}
-
-  handleOnClick(event) {
-    this.setState(event.target.value);
-    console.log(event.target.value);
+  handleSubmit(event) {
+      event.preventDefault();
+      this.fetchUser();
+      console.log("handleSubmit triggered!")
+      console.log(this.state.email);
+      console.log(this.state.password);
   }
 
+  handleChange(event){
+    this.setState({
+        email: document.getElementById("email").value, password: document.getElementById("psw").value
+    })
+    }
+
+//   handleOnClick(event) {
+//     this.setState(event.target.value);
+//     console.log(event.target.value);
+//     have the onclick send email and password into the endpoint
+//   }
+
   async fetchUser() {
+      let login = {"email": this.state.email, "password": this.state.password}
     let response = await axios.post(
-      "http://localhost:5000/api/auth" /*varible data to be passed in*/
+      "http://localhost:5000/api/auth" , login
     );
-    console.log(response.data);
+    console.log("response", response.data);
   }
 
   render() {
@@ -49,6 +73,7 @@ class Login extends React.Component {
                 {/* <div className="row justify-content-center px-3 mb-3"> <img id="logo" src="https://i.imgur.com/PSXxjNY.png"> </div> */}
                 <h3 className="mb-5 text-center heading">Wizard Gram</h3>
                 <h6 className="msg-info">Please login to your account</h6>
+                <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   {" "}
                   <label className="form-control-label text-muted">
@@ -60,7 +85,7 @@ class Login extends React.Component {
                     name="email"
                     placeholder="Email"
                     className="form-control"
-                  />
+                  onChange={this.handleChange}/>
                   <div className="form-group">
                     {" "}
                     <label className="form-control-label text-muted">
@@ -72,18 +97,13 @@ class Login extends React.Component {
                       name="psw"
                       placeholder="Password"
                       className="form-control"
-                    />
-                    <div className="row justify-content-center my-3 px-3">
-                      {" "}
-                      <button
-                        className="btn-block btn-color"
-                        onClick={this.handleOnClick}
-                      >
-                        Login to wizard gram
-                      </button>{" "}
+                    onChange={this.handleChange}/>
+                      <div className="row justify-content-center my-3 px-3">
+                          <input className="btn-block btn-color" type="submit" value="Login" />
+                      </div>
                     </div>
                     </div>
-                  </div>
+                    </form>
                 </div>
                 <div className="bottom text-center mb-5">
                   <p href="#" className="sm-text mx-auto mb-3">
