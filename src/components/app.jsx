@@ -6,7 +6,7 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./Login/login";
 import Profile from '../components/Profile/profile'
 import NavBar from "./NavBar/navBar";
-// import Register from "./Register/register";
+import Register from "./Register/register";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
       <Switch>
         <Route path="/login" exact component={Login} />
         <Route path="/profile" exact component={Profile} />
+        <Route path="/register" exact component={Register} />
       </Switch>
      </div>
   );
