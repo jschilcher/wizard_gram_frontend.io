@@ -63,7 +63,6 @@ const Login = () => {
     event.preventDefault();
     displayEnteredValues();
     fetchToken();
-    validateToken();
     justAFunction();
   };
 
