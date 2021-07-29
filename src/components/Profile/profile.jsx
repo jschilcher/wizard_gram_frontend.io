@@ -5,21 +5,21 @@ import "../Profile/profile.css";
 function Profile(props) {
   const [user, setUser] = useState({});
 
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const response = await axios
-  //       .get("http://localhost:5000/collections/user")
-  //       .then((response) => {
-  //         console.log(response);
-  //         setUser(response.data);
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   };
-  // });
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await axios
+        .get("http://localhost:5000/collections/user")
+        .then((response) => {
+          console.log(response);
+          setUser(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+  });
 
-  // console.log(user);
+  console.log(user);
 
   return (
     <div>
