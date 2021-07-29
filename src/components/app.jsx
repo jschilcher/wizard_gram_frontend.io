@@ -13,14 +13,12 @@ function App() {
     <div className="App">
       <Title />
       <NavBar />
-      <Login />
-      <Profile />
       <Switch>
         <Route path="/login" exact component={Login} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/register" exact component={Register} />
       </Switch>
-     </div>
+    </div>
   );
 }
 
