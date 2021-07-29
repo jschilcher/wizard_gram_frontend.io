@@ -9,6 +9,8 @@ class Login extends React.Component {
 
     this.state = {
       userData: {},
+      email: "",
+      password: ""
     };
 
     //dont forget bindings
@@ -56,7 +58,7 @@ class Login extends React.Component {
                     type="text"
                     id="email"
                     name="email"
-                    placeholder="Phone no or email id"
+                    placeholder="Email"
                     className="form-control"
                   />
                   <div className="form-group">
@@ -80,11 +82,6 @@ class Login extends React.Component {
                         Login to wizard gram
                       </button>{" "}
                     </div>
-                    <div className="row justify-content-center my-2">
-                      {" "}
-                      <a href="#">
-                        <small className="text-muted">Forgot Password?</small>
-                      </a>{" "}
                     </div>
                   </div>
                 </div>
@@ -103,7 +100,6 @@ class Login extends React.Component {
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }
