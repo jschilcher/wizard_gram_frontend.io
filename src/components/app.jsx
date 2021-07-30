@@ -5,7 +5,7 @@ import "../components/app.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import Login from "./Login/login";
-import Profile from "../components/Profile/profile";
+import Profile from "./Profile/profile";
 import NavBar from "./NavBar/navBar";
 import Register from "./Register/register";
 
@@ -33,14 +33,7 @@ class App extends Component {
       <NavBar user={user} />
       <Switch>
         {/* <Route path="/login" exact component={Login} /> */}
-        <Route path="/profile" render={props => {
-            if(!user){
-                return <Redirect to="/login" />;
-            } else {
-                return <Profile {...props} user={user} />
-            }
-        }}
-        />
+        <Route path="/profile" component={Profile} />
         <Route path="/login" exact component={Login} />
         <Route path="/register" component={Register} />
         

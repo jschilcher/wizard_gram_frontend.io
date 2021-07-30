@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../Login/login.css";
 import jwtDecode from "jwt-decode";
@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [validToken, setValidToken] = useState(true);
+  const history = useHistory();
 
   const handleChange = (event) => {
     setEmail(document.getElementById("email").value);
@@ -52,11 +53,8 @@ const Login = () => {
   };
 
   const loginRedirectOrFailure = async () => {
-    if (validToken) {
-      return <Redirect to="/profile" />;
-    } else {
-      console.log("Login Attempt Failed. Please Try Again");
-    }
+    history.push("/profile");
+  
   };
 
   const handleSubmit = (event) => {
