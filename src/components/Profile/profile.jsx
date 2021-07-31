@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../Profile/profile.css";
 
-function Profile() {
+function Profile(props) {
   const [user, setUser] = useState({});
+
+  console.log(props);
+  console.log(props);
 
   const fetchUser = async () => {
     const response = await axios

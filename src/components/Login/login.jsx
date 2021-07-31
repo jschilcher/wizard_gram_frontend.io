@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../Login/login.css";
+import Profile from "../Profile/profile";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -27,10 +28,11 @@ const Login = (props) => {
     });
     // setRedirect(true);
     console.log("This shows the Specific User", specificUser);
-    history.push("/profile");
+    let userData = JSON.parse(JSON.stringify(specificUser));
+    <Profile props={userData}></Profile>;
+    return userData, history.push("/profile");
   };
 
-    
   return (
     <div className="container px-4 py-5 mx-auto">
       <div className="card card0"></div>
