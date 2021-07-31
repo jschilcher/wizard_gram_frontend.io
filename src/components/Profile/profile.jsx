@@ -1,26 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "../Profile/profile.css";
 
-function Profile(props) {
+function Profile() {
   const [user, setUser] = useState({});
 
-
-    const fetchUser = async () => {
-      const response = await axios
-        .get("http://localhost:5000/collections/userID/profile")
-        .then((response) => {
-          console.log(response);
-          setUser(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
-
-    fetchUser();
-
-  console.log(user);
+  const fetchUser = async () => {
+    const response = await axios
+      .get("http://localhost:5000/collections/userID/profile")
+      .then((response) => {
+        console.log(response);
+        setUser(response.data);
+        return response;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    console.log(response);
+  };
 
   return (
     <div>
@@ -142,15 +139,14 @@ function Profile(props) {
               </div>
             </div>
 
-              <div className="gallery-item-type">
-                <span className="visually-hidden">Video</span>
-                <i className="fas fa-video" aria-hidden="true"></i>
-              </div>
-              </div> 
-            </div> 
-            </main>
-        </div>      
-
+            <div className="gallery-item-type">
+              <span className="visually-hidden">Video</span>
+              <i className="fas fa-video" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }
 

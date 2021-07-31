@@ -1,69 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../Login/login.css";
-import jwtDecode from "jwt-decode";
 
-const Login = () => {
-  const [userData, setUserData] = useState("");
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [validToken, setValidToken] = useState(true);
   const history = useHistory();
+  // const [redirect, setRedirect] = useState(false);
 
-  const handleChange = (event) => {
-    setEmail(document.getElementById("email").value);
-    setPassword(document.getElementById("psw").value);
-  };
-
-  const displayEnteredValues = () => {
-    console.log("handleSubmit triggered!");
-    console.log("Email address entered", email);
-    console.log("Password entered", password);
-  };
-
-  const fetchToken = async () => {
-    let login = { email: email, password: password };
-    let response = await axios.post("http://localhost:5000/api/auth", login);
-    console.log("response", response.data);
-    localStorage.setItem("token", response.data);
-  };
-
-  const validateToken = async () => {
-    try {
-      const jwt = localStorage.getItem("token");
-      const response = await axios.get(
-        "http://localhost:5000/api/collections/user",
-        { headers: { "x-auth-token": jwt } }
-      );
-      console.log("Token validation is successful", response.data);
-      setValidToken(true);
-      return response;
-    } catch (error) {
-      console.log("Token validation has failed", error);
-    }
-  };
-
-  const justAFunction = async (response) => {
-    try {
-      setUserData(await validateToken.call(response));
-      console.log("Here is the userData", userData);
-      loginRedirectOrFailure();
-    } catch (error) {}
-  };
-
-  const loginRedirectOrFailure = async () => {
-    history.push("/profile");
-  
-  };
-
-  const handleSubmit = (event) => {
+  //OnSumbit Functionality
+  //...
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    displayEnteredValues();
-    fetchToken();
-    justAFunction();
+    let loginInfo = { email: email, password: password };
+    let res = await axios.get(
+      "http://localhost:5000/api/collections/user",
+      loginInfo
+    );
+
+    let allUsers = res.data;
+    console.log(allUsers);
+
+    let specificUser = allUsers.filter(function (el) {
+      return email === el.email;
+    });
+    // setRedirect(true);
+    console.log("This shows the Specific User", specificUser);
+    history.push("/profile");
   };
 
+    
   return (
     <div className="container px-4 py-5 mx-auto">
       <div className="card card0"></div>
@@ -86,7 +53,7 @@ const Login = () => {
                     name="email"
                     placeholder="Email"
                     className="form-control"
-                    onChange={handleChange}
+                    onChange={(event) => setEmail(event.target.value)}
                   />
                   <div className="form-group">
                     {" "}
@@ -99,7 +66,7 @@ const Login = () => {
                       name="psw"
                       placeholder="Password"
                       className="form-control"
-                      onChange={handleChange}
+                      onChange={(event) => setPassword(event.target.value)}
                     />
                     <div className="row justify-content-center my-3 px-3">
                       <input
@@ -130,3 +97,17 @@ const Login = () => {
   );
 };
 export default Login;
+
+//  const fetchToken = () =>{
+//      //Make API call to function
+//   let response = axios.post(
+//     "http://localhost:5000/api/auth",
+//     loginInfo
+//   );
+// console.log(response);
+
+//...
+// Extract the JWT from the response
+// const { jwt_token } = response.data;
+
+// Now fetchUser
