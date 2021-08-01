@@ -6,6 +6,7 @@ import Login from "./Login/login";
 import Profile from "./Profile/profile";
 import NavBar from "./NavBar/navBar";
 import Register from "./Register/register";
+import Home from "./Home/home";
 import "../components/app.css";
 // import jwtDecode from "jwt-decode";
 
@@ -15,6 +16,7 @@ export default function App() {
       <Title />
       <NavBar />
       <Switch>
+        <Route path={ROUTES.HOME} exact component={Home} />
         <Route path={ROUTES.PROFILE} component={Profile} />
         <Route path={ROUTES.LOGIN} exact component={Login} />
         <Route path={ROUTES.REGISTER} component={Register} />

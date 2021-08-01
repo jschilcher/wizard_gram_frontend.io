@@ -16,7 +16,6 @@ const Login = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.clear();
     fetchAllUsers();
   }, []);
 
