@@ -1,40 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect /*, PropTypes*/ } from "react";
 import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
+import * as ROUTES from "../../constants/routes";
 import axios from "axios";
 import "../Login/login.css";
-import Profile from "../Profile/profile";
 
 const Login = (props) => {
+  const [userData, setUserData] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-  // const [redirect, setRedirect] = useState(false);
+  let specificUser;
+  let username;
 
-  //OnSumbit Functionality
-  //...
-  const handleSubmit = async (event) => {
+  // Will research TailWind CSS later since its a better bootstrap experience
+
+  useEffect(() => {
+    document.title = "Login - WizardGram";
+  }, []);
+
+  useEffect(() => {
+    fetchAllUsers();
+  }, []);
+
+  const fetchAllUsers = async (event) => {
+    await axios
+      .get("http://localhost:5000/api/collections/user")
+      .then((response) => {
+        setUserData(response.data);
+      });
+  };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    let loginInfo = { email: email, password: password };
-    let res = await axios.get(
-      "http://localhost:5000/api/collections/user",
-      loginInfo
-    );
-
-    let allUsers = res.data;
-    console.log(allUsers);
-
-    let specificUser = allUsers.filter(function (el) {
-      return email === el.email;
-    });
-    // setRedirect(true);
-    console.log("This shows the Specific User", specificUser);
-    let userData = JSON.parse(JSON.stringify(specificUser));
-    <Profile props={userData}></Profile>;
-    return userData, history.push("/profile");
+    try {
+      specificUser = userData.filter(function (el) {
+        return email === el.email;
+      });
+      localStorage.setItem("specificUser", JSON.stringify(specificUser));
+      setUserData(specificUser);
+      history.push(ROUTES.PROFILE);
+    } catch {
+      localStorage.removeItem(userData);
+      setUserData(null);
+      console.log("HandleSubmit has failed");
+    }
   };
 
   return (
-    <div className="container px-4 py-5 mx-auto">
+    <div className="login container px-4 py-5 mx-auto">
       <div className="card card0"></div>
       <div className="d-flex flex-lg-row flex-column-reverse">
         <div className="card card1">
@@ -43,7 +57,7 @@ const Login = (props) => {
               {/* <div className="row justify-content-center px-3 mb-3"> <img id="logo" src="https://i.imgur.com/PSXxjNY.png"> </div> */}
               <h3 className="mb-5 text-center heading">Wizard Gram</h3>
               <h6 className="msg-info">Please login to your account</h6>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} method="POST">
                 <div className="form-group">
                   {" "}
                   <label className="form-control-label text-muted">
@@ -55,7 +69,7 @@ const Login = (props) => {
                     name="email"
                     placeholder="Email"
                     className="form-control"
-                    onChange={(event) => setEmail(event.target.value)}
+                    onChange={({ target }) => setEmail(target.value)}
                   />
                   <div className="form-group">
                     {" "}
@@ -68,7 +82,7 @@ const Login = (props) => {
                       name="psw"
                       placeholder="Password"
                       className="form-control"
-                      onChange={(event) => setPassword(event.target.value)}
+                      onChange={({ target }) => setPassword(target.value)}
                     />
                     <div className="row justify-content-center my-3 px-3">
                       <input
@@ -98,6 +112,7 @@ const Login = (props) => {
     </div>
   );
 };
+
 export default Login;
 
 //  const fetchToken = () =>{

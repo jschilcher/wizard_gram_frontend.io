@@ -1,45 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import * as ROUTES from "../constants/routes";
 import Title from "./Title/title";
-import "../components/app.css";
-import { Switch, Route} from "react-router-dom";
-// import jwtDecode from "jwt-decode";
 import Login from "./Login/login";
 import Profile from "./Profile/profile";
 import NavBar from "./NavBar/navBar";
 import Register from "./Register/register";
+import "../components/app.css";
+// import jwtDecode from "jwt-decode";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  componentDidMount() {
-    // const jwt = localStorage.getItem("token");
-    try {
-      // const user = jwtDecode(jwt);
-      // this.setstate({
-      //     user
-      // });
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  render() {
-    const user = this.state.user;
-    return (
-      <div className="App">
-        <Title />
-        <NavBar user={user} />
-        <Switch>
-          {/* <Route path="/login" exact component={Login} /> */}
-          <Route path="/profile" component={Profile} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/register" component={Register} />
-        </Switch>
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div className="App">
+      <Title />
+      <NavBar />
+      <Switch>
+        <Route path={ROUTES.PROFILE} component={Profile} />
+        <Route path={ROUTES.LOGIN} exact component={Login} />
+        <Route path={ROUTES.REGISTER} component={Register} />
+      </Switch>
+    </div>
+  );
 }
-
-export default App;
