@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import axios from "axios";
-import login from "../app";
 import "../Register/register.css";
 
 const Register = (props) => {
@@ -13,32 +12,49 @@ const Register = (props) => {
   const [password, setPassword] = useState("");
   const history = useHistory("/profile");
   let specificUser;
+  // let [jwt,setJWT] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
     document.title = "Register - WizardGram";
   }, []);
+
+  // Just a workaround not intended for live use
+  // useEffect(() => {
+  //   fetchAllUsers();
+  // }, []);
+
+  // const fetchAllUsers = async (event) => {
+  //   await axios
+  //     .get("http://localhost:5000/api/collections/user")
+  //     .then((response) => {
+  //       localStorage.setItem("token", response.data);
+  //       setJWT()
+  //       console.log(jwt);
+  //     });
+  // };
+  // End of workaround
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
       let loginInfo = {
-        firstname: firstname,
-        lastname: lastname,
+        firstName: firstname,
+        lastName: lastname,
         username: username,
         email: email,
         password: password,
       };
-      let response = await axios.post(
-        "http://localhost:5000/api/auth",
+      // console.log(jwt);
+      await axios.post(
+        "http://localhost:5000/api/collections/user",
+        // headers: { "x-auth-token": jwt },
         loginInfo
       );
-      //...
-      // Extract the JWT from the response
-      const { jwt_token } = await response.json();
-      //...
-      // If token was received, then perform login from app.js
-      await login({ jwt_token });
+
+      alert(
+        "You have successfully registered your account! Please Click 'OK' to continue to login page."
+      );
       history.push(ROUTES.LOGIN);
     } catch {
       localStorage.removeItem(specificUser);

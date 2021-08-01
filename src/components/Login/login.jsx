@@ -4,7 +4,7 @@ import * as ROUTES from "../../constants/routes";
 import axios from "axios";
 import "../Login/login.css";
 
-const Login = (props) => {
+const Login = () => {
   const [userData, setUserData] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -111,16 +111,4 @@ const Login = (props) => {
 
 export default Login;
 
-//  const fetchToken = () =>{
-//      //Make API call to function
-//   let response = axios.post(
-//     "http://localhost:5000/api/auth",
-//     loginInfo
-//   );
-// console.log(response);
 
-//...
-// Extract the JWT from the response
-// const { jwt_token } = response.data;
-
-// Now fetchUser

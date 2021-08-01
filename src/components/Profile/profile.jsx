@@ -4,7 +4,7 @@ import Sidebar from "../Sidebar/sidebar";
 import Header from "../Header/header";
 import Timeline from "../Timeline/timeline";
 
-function Profile(props) {
+function Profile() {
   useEffect(() => {
     document.title = "WizardGram";
   }, []);
