@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import * as ROUTES from "../../constants/routes"
 
 const NavBar = ({ user }) => {
   return (
@@ -7,25 +8,25 @@ const NavBar = ({ user }) => {
       {user && <h4>Welcome {user.username}</h4>}
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to={ROUTES.LOGIN}>Home</Link>
         </li>
         <li>
-          <Link to="/profile">Profile</Link>
+          <Link to={ROUTES.PROFILE}>Profile</Link>
         </li>
         {!user && (
           <React.Fragment>
             <li>
-              <Link to="/register">Register</Link>
+              <Link to={ROUTES.REGISTER}>Register</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to={ROUTES.LOGIN}>Login</Link>
             </li>
           </React.Fragment>
         )}
         {user && (
           <React.Fragment>
             <li>
-              <Link to="/logout">Logout</Link>
+              <Link to={ROUTES.LOGIN}>Logout</Link>
             </li>
           </React.Fragment>
         )}
