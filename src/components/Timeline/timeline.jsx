@@ -3,7 +3,7 @@ import React from "react";
 function Timeline() {
   return (
     <div>
-      <p>I ame the timeline</p>
+      <p>I am the Timeline Component</p>
     </div>
   );
 }
