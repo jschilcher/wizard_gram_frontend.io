@@ -17,7 +17,7 @@ export default function Header() {
               />
             </div>
             <div className="profile-user-settings">
-              <h1 className="profile-user-name">Strangebella22</h1>
+              <h1 className="profile-user-name">{`${breakdown}`}</h1>
 
               <button className="btn profile-edit-btn">Edit Profile</button>
 
@@ -45,14 +45,13 @@ export default function Header() {
 
             <div className="profile-bio">
               <p>
-                <span className="profile-real-name">Bellatrix</span> Lorem ipsum
-                dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
+                <span className="profile-real-name">{`${breakdown}`}</span>{" "}
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
               </p>
             </div>
           </div>
         </div>
-      </header>
-      {" "}
+      </header>{" "}
       <div>
         <main>
           <div className="container">

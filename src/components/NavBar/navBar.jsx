@@ -8,7 +8,7 @@ const NavBar = ({ user }) => {
       {user && <h4>Welcome {user.username}</h4>}
       <ul>
         <li>
-          <Link to={ROUTES.HOME}>Home</Link>
+          <Link to={ROUTES.HOME}>Logout</Link>
         </li>
         <li>
           <Link to={ROUTES.PROFILE}>Profile</Link>
