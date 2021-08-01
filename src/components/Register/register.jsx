@@ -78,12 +78,11 @@ const Register = (props) => {
                     type="text"
                     class="form-control"
                     id="floatingInputFirstname"
-                    placeholder="my firstname"
+                    placeholder="First nName"
                     required
                     autoFocus
                     onChange={({ target }) => setFirstName(target.value)}
                   />
-                  <label for="floatingInputFirstname">First Name</label>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -91,12 +90,11 @@ const Register = (props) => {
                     type="text"
                     class="form-control"
                     id="floatingInputLastname"
-                    placeholder="my lastname"
+                    placeholder="Last Name"
                     required
                     autoFocus
                     onChange={({ target }) => setLastName(target.value)}
                   />
-                  <label for="floatingInputLastname">Last Name</label>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -104,12 +102,11 @@ const Register = (props) => {
                     type="text"
                     class="form-control"
                     id="floatingInputUsername"
-                    placeholder="myusername"
+                    placeholder="Username"
                     required
                     autoFocus
                     onChange={({ target }) => setUserName(target.value)}
                   />
-                  <label for="floatingInputUsername">Username</label>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -117,10 +114,9 @@ const Register = (props) => {
                     type="email"
                     class="form-control"
                     id="floatingInputEmail"
-                    placeholder="name@example.com"
+                    placeholder="Email Address"
                     onChange={({ target }) => setEmail(target.value)}
                   />
-                  <label for="floatingInputEmail">Email address</label>
                 </div>
 
                 <hr />
@@ -133,7 +129,6 @@ const Register = (props) => {
                     placeholder="Password"
                     onChange={({ target }) => setPassword(target.value)}
                   />
-                  <label for="floatingPassword">Password</label>
                 </div>
 
                 <div class="d-grid mb-2">
