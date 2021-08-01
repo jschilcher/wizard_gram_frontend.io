@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
 import axios from "axios";
 import login from "../app";
 import "../Register/register.css";
@@ -10,28 +11,38 @@ const Register = (props) => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
   const history = useHistory("/profile");
+  let specificUser;
+
+  useEffect(() => {
+    document.title = "Register - WizardGram";
+  }, []);
 
   const handleSubmit = async (event) => {
-    //...
     event.preventDefault();
-    //Make API call to function
-    let response = await axios.post("http://localhost:5000/api/auth", {
-      body: JSON.stringify({ firstname, lastname, username, email, password }),
-    });
-    //...
-    // Extract the JWT from the response
-    const { jwt_token } = await response.json();
-    //...
-    // If token was received, then perform login from app.js
-    await login({ jwt_token });
 
-    setRedirect(true);
-    //...
-    // Redirect user to Profile page
-    if (redirect) {
-      history.push("/profile");
+    try {
+      let loginInfo = {
+        firstname: firstname,
+        lastname: lastname,
+        username: username,
+        email: email,
+        password: password,
+      };
+      let response = await axios.post(
+        "http://localhost:5000/api/auth",
+        loginInfo
+      );
+      //...
+      // Extract the JWT from the response
+      const { jwt_token } = await response.json();
+      //...
+      // If token was received, then perform login from app.js
+      await login({ jwt_token });
+      history.push(ROUTES.LOGIN);
+    } catch {
+      localStorage.removeItem(specificUser);
+      console.log("HandleSubmit has failed");
     }
   };
 
@@ -54,9 +65,7 @@ const Register = (props) => {
                     placeholder="my firstname"
                     required
                     autoFocus
-                    onChange={(e) => {
-                      setFirstName(e.target.value);
-                    }}
+                    onChange={({ target }) => setFirstName(target.value)}
                   />
                   <label for="floatingInputFirstname">First Name</label>
                 </div>
@@ -69,9 +78,7 @@ const Register = (props) => {
                     placeholder="my lastname"
                     required
                     autoFocus
-                    onChange={(e) => {
-                      setLastName(e.target.value);
-                    }}
+                    onChange={({ target }) => setLastName(target.value)}
                   />
                   <label for="floatingInputLastname">Last Name</label>
                 </div>
@@ -84,9 +91,7 @@ const Register = (props) => {
                     placeholder="myusername"
                     required
                     autoFocus
-                    onChange={(e) => {
-                      setUserName(e.target.value);
-                    }}
+                    onChange={({ target }) => setUserName(target.value)}
                   />
                   <label for="floatingInputUsername">Username</label>
                 </div>
@@ -97,9 +102,7 @@ const Register = (props) => {
                     class="form-control"
                     id="floatingInputEmail"
                     placeholder="name@example.com"
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
+                    onChange={({ target }) => setEmail(target.value)}
                   />
                   <label for="floatingInputEmail">Email address</label>
                 </div>
@@ -112,9 +115,7 @@ const Register = (props) => {
                     class="form-control"
                     id="floatingPassword"
                     placeholder="Password"
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                    }}
+                    onChange={({ target }) => setPassword(target.value)}
                   />
                   <label for="floatingPassword">Password</label>
                 </div>

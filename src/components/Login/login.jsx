@@ -1,6 +1,5 @@
 import React, { useState, useEffect /*, PropTypes*/ } from "react";
 import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
 import * as ROUTES from "../../constants/routes";
 import axios from "axios";
 import "../Login/login.css";
@@ -11,9 +10,6 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const history = useHistory();
   let specificUser;
-  let username;
-
-  // Will research TailWind CSS later since its a better bootstrap experience
 
   useEffect(() => {
     document.title = "Login - WizardGram";

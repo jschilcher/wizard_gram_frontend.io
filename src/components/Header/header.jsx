@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-function Header() {
+export default function Header() {
   const username = JSON.parse(localStorage.getItem("specificUser"));
 
   let breakdown = "There is no user";
@@ -138,5 +136,3 @@ function Header() {
     </div>
   );
 }
-
-export default Header;
